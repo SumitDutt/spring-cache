@@ -6,19 +6,19 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@Service
-public class CalculatorServiceImpl  implements CalculatorService{
-    private final Logger LOG = LoggerFactory.getLogger(CalculatorService.class);
 
-    @Cacheable(value = "areaOfSquareCache", condition = "#side > 5")
-    @Override
+@Service
+public class EHCacheServiceImpl implements EHCacheService {
+
+    private final Logger LOG = LoggerFactory.getLogger(EHCacheServiceImpl.class);
+
+    @Cacheable(value = "areaOfSquareCache", key = "#side")
     public double areaOfSquare(int side) {
         LOG.info("Calculate the area of a SQUARE with a side of {}", side);
         return side * side;
     }
 
-    @CacheEvict(cacheNames = {"areaOfSquareCache"}, allEntries = true)
-    @Override
+    @CacheEvict(cacheNames = { "areaOfSquareCache" }, allEntries = true)
     public void clearCache() {
         LOG.info("Clear Cache...");
     }
