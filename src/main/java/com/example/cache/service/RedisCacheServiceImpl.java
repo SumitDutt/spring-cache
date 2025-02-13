@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class EHCacheServiceImpl implements EHCacheService {
+public class RedisCacheServiceImpl implements RedisCacheService {
 
-    private final Logger LOG = LoggerFactory.getLogger(EHCacheServiceImpl.class);
+    private final Logger LOG = LoggerFactory.getLogger(RedisCacheServiceImpl.class);
 
     @Cacheable(value = "areaOfSquareCache", key = "#side")
     public double areaOfSquare(int side) {

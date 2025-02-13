@@ -3,7 +3,7 @@ package com.example.cache.service;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 
-public interface EHCacheService {
+public interface RedisCacheService {
     @Cacheable(value = "areaOfSquareCache", key = "#side")
     double areaOfSquare(int side);
 

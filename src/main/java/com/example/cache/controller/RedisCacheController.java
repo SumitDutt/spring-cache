@@ -1,7 +1,7 @@
 package com.example.cache.controller;
 
 
-import com.example.cache.service.EHCacheService;
+import com.example.cache.service.RedisCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class EHCacheController {
+public class RedisCacheController {
 
     @Autowired
-    private EHCacheService serEhCacheService;
+    private RedisCacheService redisCacheService;
 
     @GetMapping("/areaOfSquare")
     public ResponseEntity<Double> areaofSquare(@RequestParam int side) {
-        return ResponseEntity.ok(serEhCacheService.areaOfSquare(side));
+        return ResponseEntity.ok(redisCacheService.areaOfSquare(side));
     }
 
     @GetMapping(path = "/evict")
     public ResponseEntity<String> evictCache() {
-        serEhCacheService.clearCache();
+        redisCacheService.clearCache();
         return ResponseEntity.ok("Cache successfully clean");
     }
 
