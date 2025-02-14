@@ -1,7 +1,7 @@
 package com.example.cache.controller;
 
 
-import com.example.cache.service.RedisCacheService;
+import com.example.cache.service.CaffineCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class RedisCacheController {
+public class CaffineCacheController {
 
     @Autowired
-    private RedisCacheService redisCacheService;
+    private CaffineCacheService redisCacheService;
 
     @GetMapping("/areaOfSquare")
     public ResponseEntity<Double> areaofSquare(@RequestParam int side) {
